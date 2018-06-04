@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Pills, Categories_Body, Categories_Gender
+
+
+admin.site.register(Pills)
+admin.site.register(Categories_Body)
+admin.site.register(Categories_Gender)
