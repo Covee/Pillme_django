@@ -20,6 +20,8 @@ class Categories_Gender(models.Model):
 
 class Pills(models.Model):
 	name			= models.CharField(max_length=20, null=False)
+	feature			= models.TextField(max_length=50, null=True)
+	editor_said		= models.TextField(max_length=50, null=True)
 	description		= models.TextField(max_length=2000)
 	ingredient		= models.TextField(max_length=2000)
 	category_body	= models.ManyToManyField(Categories_Body)
