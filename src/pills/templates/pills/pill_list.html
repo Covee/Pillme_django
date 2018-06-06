@@ -8,11 +8,11 @@
 	<div class='container'>
 	{% for pills in object_list %}
   		<div class="row">
-  			<div class="col-md-4">
+  			<div class="col-lg-4">
 			  	<div class="card mb-3" style="width: 18rem;">
 			  		<h3 class="card-header" style="text-align: center;">{{ pills.name }}</h3>
 			  		<div class="card-body">
-			  			<h5 class="card-title">특징: {{ pills.feature }}</h5>
+			  			<h5 class="card-title" style="height: 45px;"">특징: {{ pills.feature }}</h5>
 			  			<h6 class="card-subtitle text-muted" style="height: 25px;">특별 코멘트: {{ pills.editor_said }}</h6>
 			  		</div>
 			  		<img style="height: 200px; width: 100%; display: block;" src="{{ pills.image.url }}" alt="Card image">
@@ -20,12 +20,12 @@
 			  			<p class="card-text" style="height: 200px;">{{ pills.description|truncatechars:200 }}</p>
 			  		</div>
 			  		<ul class="list-group list-group-flush">
+			  			<li class="list-group-item">효능: </li>
 			  			<li class="list-group-item">결핍 시: </li>
 			  			<li class="list-group-item">주의 할 점: </li>
-			  			<li class="list-group-item">Vestibulum at eros</li>
 			  		</ul>
 			  		<div class="card-body">
-			  			<a href="#" class="card-link">Card link</a>
+			 			<a href="#" class="card-link">Card link</a>
 			  			<a href="#" class="card-link">관련기사 링크</a>
 			  		</div>
 			  		<div class="card-footer text-muted">
