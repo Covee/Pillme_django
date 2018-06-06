@@ -1,56 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS (https://www.bootstrapcdn.com/bootswatch/) -->  
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-LlPOZK7jvvPEMrrhdqVlEYmX2u/GWKdcq/p7wuVYAUladqNeK7VN1PUZQDmiqlql" crossorigin="anonymous">
-
-    <title>PILL me!</title>
-  </head>
-
+{% extends "base.html" %}
 
   <body>
-  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  		<a class="navbar-brand" href="#">PILL ME</a>
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-  			<span class="navbar-toggler-icon"></span>
-  		</button>
 
-  		<div class="collapse navbar-collapse" id="navbarColor03">
-  			<ul class="navbar-nav mr-auto">
-  				<li class="nav-item dropdown show">
-  					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Category</a>
-  					<div class="dropdown-menu show" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
-  						<a class="dropdown-item" href="{% url 'pills:pill_list' %}">전체 보기</a>
-  						<div class="dropdown-divider"></div>
-  						<a class="dropdown-item" href="#">눈(시력)</a>
-  						<a class="dropdown-item" href="#">간</a>
-  						<a class="dropdown-item" href="#">혈관</a>
-  						<a class="dropdown-item" href="#">뇌</a>
-  						<div class="dropdown-divider"></div>
-  						<a class="dropdown-item" href="#">남성에게 꼭 필요한 영양제</a>
-  						<a class="dropdown-item" href="#">여성에게 꼭 필요한 영양제</a>
-  						<div class="dropdown-divider"></div>
-  						<a class="dropdown-item" href="#">Separated link</a>
-  					</div>
-  				</li>
-  				<li class="nav-item">
-  					<a class="nav-link" href="#">Good To Know</a>
-  				</li>
-  				<li class="nav-item">
-  					<a class="nav-link" href="#">FreeBoard</a>
-  				</li>
-  				<li class="nav-right">
-  					<a class="nav-link" href="#">LogIn</a>
-  				</li>
-  			</ul>
-  			
-  		</div>
-  	</nav>
-
+  	{% block content %}
   	<div class="container">
 	  	<div class="jumbotron text-center" >
 	  		<h1 class="display-3">우리 모두 약쟁이가 되어봅시다 !</h1>
@@ -157,7 +109,7 @@
 
     <h1>card 반응형으로 / login navbar에서 오른쪽 붙이기 / 검색창에 버튼, form inline 처럼 옆에 바로 붙이기</h1>
 
-    
+    {% endblock %}
 
 
     <!-- Optional JavaScript -->
@@ -166,4 +118,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </body>
-</html>

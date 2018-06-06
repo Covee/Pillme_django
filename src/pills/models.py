@@ -1,5 +1,7 @@
 from django.db import models
 
+from PIL import Image
+
 
 class Categories_Body(models.Model):
 	name		= models.CharField(max_length=20, null=False)
@@ -50,5 +52,5 @@ class Pills(models.Model):
 
 
 
-	# 날짜 한국시간 기준 맞추기
+	
 	# 파일 저장되는 경로 설정 어떻게 할지 구체적으로 생각 해보기.

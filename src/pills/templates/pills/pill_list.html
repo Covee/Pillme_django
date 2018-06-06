@@ -1,9 +1,39 @@
-<h1>Pill list</h1>
-    <ul>
-    	{% for pills in object_list %}
-    	<li>{{ pills.name }}</li>
-    	<li>{{ pills.description }}</li>
-    	{% empty %}
-    	<li>No pills yet.</li>
-    	{% endfor %}
-    </ul>
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Pill list</h1>
+
+{% for pills in object_list %}
+	<div class='container'>
+  		<div class="row">
+  			<div class="col-md-4">
+			  	<div class="card mb-3" style="width: 18rem;">
+			  		<h3 class="card-header" style="text-align: center;">{{ pills.name }}</h3>
+			  		<div class="card-body">
+			  			<h5 class="card-title">특징: 생선 비린내 오지게 남</h5>
+			  			<h6 class="card-subtitle text-muted">특별 코멘트: 먹을만 함</h6>
+			  		</div>
+			  		<img style="height: 200px; width: 100%; display: block;" src="{{ pills.image }}" alt="Card image">{{ pills.image }}
+			  		<div class="card-body">
+			  			<p class="card-text">{{ pills.description }}</p>
+			  		</div>
+			  		<ul class="list-group list-group-flush">
+			  			<li class="list-group-item">Cras justo odio</li>
+			  			<li class="list-group-item">Dapibus ac facilisis in</li>
+			  			<li class="list-group-item">Vestibulum at eros</li>
+			  		</ul>
+			  		<div class="card-body">
+			  			<a href="#" class="card-link">Card link</a>
+			  			<a href="#" class="card-link">Another link</a>
+			  		</div>
+			  		<div class="card-footer text-muted">
+			  			2 days ago
+			  		</div>
+		  		</div>
+		  	</div>
+{% endfor %}
+
+
+
+{% endblock %}

@@ -92,9 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -107,3 +107,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+# 실제 서비스 환경에서 필요한 것. 프로젝트에 사용하는 모든 정적 파일들(static files)을 한곳에 모아 넣는다
+# manage.py collectstatic 명령으로 각 앱 디렉토리의 static과 STATICFILES_DIRS에 지정된 모든 파일을 긁어온다.
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
+MEDIA_URL = '/upload_images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "upload_images")
