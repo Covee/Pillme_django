@@ -34,16 +34,16 @@
 		{% if user.is_active %}
 		<ul class="nav navbar-nav navbar-right">
 			<li class="nav-right">
-				<a class="nav-link" href="{% url 'profiles:detail' user %}">프로필</a>
+				<a class="nav-link" href="{% url 'accounts:user_detail' user %}">프로필</a>
 			</li>
 			<li class="nav-right">
-				<a class="nav-link" href="{% url 'profiles:logout' %}">로그아웃</a>
+				<a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
 			</li>
 		</ul>
 		{% else %}
 		<ul class="nav navbar-nav navbar-right">
 			<li class="nav-right">
-				<a class="nav-link" href="{% url 'profiles:login' %}">로그인</a>
+				<a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
 			</li>
 		</ul>
 		{% endif %}
