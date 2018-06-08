@@ -20,9 +20,9 @@
 			  			<p class="card-text" style="height: 200px;">{{ pills.description|truncatechars:200 }}</p>
 			  		</div>
 			  		<ul class="list-group list-group-flush">
-			  			<li class="list-group-item">효능: </li>
-			  			<li class="list-group-item">결핍 시: </li>
-			  			<li class="list-group-item">주의 할 점: </li>
+			  			<li class="list-group-item"><b>효능:</b> <small>{{ pills.benefit|truncatechars:20 }}</small></li>
+			  			<li class="list-group-item"><b>결핍 시:</b> <small>{{ pills.shortage|truncatechars:20 }}</small></li>
+			  			<li class="list-group-item"><b>주의 할 점:</b> <small>{{ pills.careful|truncatechars:20 }}</small></li>
 			  		</ul>
 			  		<div class="card-body">
 			 			<a href="#" class="card-link">Card link</a>
