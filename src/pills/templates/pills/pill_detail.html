@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-3">{{ object.name }}</h1>
+  <p class="lead">{{ object.feature }}</p>
+  <p class="lead">{{ object.editor_said }}</p>
+  <img style="height: 80%; width: 100%; display: block;" src="{{ pills.image.url }}">
+  <hr class="my-4">
+  <p>{{ object.description }}</p>
+	<hr/>
+	<h4>효능</h4>
+	<p>ㄴ미ㅏ어리;ㅁㅇ너리ㅏㅓㅁ; </p>
+	<hr/>
+	<h4>결핍 시</h4>
+	<p>ㄴ미ㅏ어리;ㅁㅇ너리ㅏㅓㅁ; </p>
+	<hr/>
+	<h4>주의할 점</h4>
+	<p>ㄴ미ㅏ어리;ㅁㅇ너리ㅏㅓㅁ; </p>
+		
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">관련 자료</a>
+  </p>
+</div>
+{% endblock %}

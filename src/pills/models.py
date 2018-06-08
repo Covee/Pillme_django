@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 from PIL import Image
 
@@ -31,7 +32,8 @@ class Pills(models.Model):
 	def __str__(self):
 		return self.name
 			
-
+	def get_absolute_url(self):
+		return reverse('pills:pill_detail', args=[self.id])
 
 
 
