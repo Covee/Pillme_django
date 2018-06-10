@@ -33,8 +33,11 @@
 			  		</div>
 		  		</div>
 		  	</div>
-	{% endfor %}
-
+		{% empty %}
+			{% if request.GET.q %}
+				<p>그런 영양제 없음</p>
+			{% endif %}
+		{% endfor %}
 
 
 {% endblock %}
