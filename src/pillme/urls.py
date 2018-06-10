@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^pills/', include("pills.urls", namespace="pills")),
     
 	url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+	url(r'^freeboard/', include('posts.urls', namespace='freeboard')),
 
 
 ] 
