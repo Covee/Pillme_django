@@ -1,0 +1,12 @@
+	<div class="container-fluid">
+		<form method="GET" action="{% url 'pills:pill_list' %}">
+		  	<div class="form-row">
+			    <div class="col-sm-11">
+			    	<input type="text" name="q" value="{{ request.GET.q }}" class="form-control mr-sm-3" placeholder="영양제 검색">
+			    </div>
+			    <div class="col-auto">
+			      	<button class="btn btn-secondary my-sm-0" type="submit">검색</button>
+			    </div>
+		  	</div>
+		</form>
+	</div>
