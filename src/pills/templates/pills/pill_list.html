@@ -34,9 +34,16 @@
 		  		</div>
 		  	</div>
 		{% empty %}
+		
 			{% if request.GET.q %}
-				<p>그런 영양제 없음</p>
+				{% include 'pills/search_form.html' %}
+				<div class="container-fluid">
+					<p></p>
+					<p style="text-align: center;">그런 영양제 없음</p>
+					
+				</div>
 			{% endif %}
+			
 		{% endfor %}
 
 
