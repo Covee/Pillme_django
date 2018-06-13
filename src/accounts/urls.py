@@ -6,8 +6,8 @@ from .views import UserDetailView, UserRegisterView
 
 
 urlpatterns = [
-	url(r'^', include("django.contrib.auth.urls")),
-	url(r'^profile/(?P<username>[\w.@+-]+)/$', UserDetailView.as_view(), name='user_detail'),
-	url(r'^register/$', UserRegisterView.as_view(), name='register'),
+	# url(r'^', include("django.contrib.auth.urls")),
+	# url(r'^profile/(?P<username>[\w.@+-]+)/$', UserDetailView.as_view(), name='user_detail'),
+	# url(r'^register/$', UserRegisterView.as_view(), name='register'),
 
 ]

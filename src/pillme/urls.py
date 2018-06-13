@@ -12,7 +12,9 @@ urlpatterns = [
     url(r'^$', home_view, name='home'),
     url(r'^pills/', include("pills.urls", namespace="pills")),
     
-	url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('allauth.urls')),  # for allauth
+
+	# url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 	url(r'^freeboard/', include('posts.urls', namespace='freeboard')),
 
 
