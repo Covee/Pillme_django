@@ -87,6 +87,8 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 SOCIALACCOUNT_PROVIDERS = { 'google': 
                              { 'SCOPE': ['email'],
                                'AUTH_PARAMS': { 'access_type': 'online' }
@@ -130,6 +132,19 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 ACCOUNT_LOGOUT_ON_GET = True
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+
+# email verification을 통과해야만 로그인 가능(mandatory), 일단 인증안해도 로그인 가능(optional), 인증 필요없음(none)
+ACCOUNT_EMAIL_VERIFICATION = 'optional' 
+
+# 5번 연속 로그인 실패시, 5분(300초)간 로그인 할 수 없다.
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
