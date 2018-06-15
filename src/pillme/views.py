@@ -4,6 +4,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from pills.models import Pills
+
 
 def home_view(request):
-	return render(request, "home.html", {})
+	queryset = Pills.objects.all()
+	context = {
+		'object_list': queryset
+	}
+	return render(request, "home.html", context)
