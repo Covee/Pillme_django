@@ -133,7 +133,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 ACCOUNT_LOGOUT_ON_GET = True
 
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
 
 # email verification을 통과해야만 로그인 가능(mandatory), 일단 인증안해도 로그인 가능(optional), 인증 필요없음(none)

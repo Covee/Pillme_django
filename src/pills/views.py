@@ -1,8 +1,14 @@
 from django.db.models import Q
 
 from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404, redirect, render
 
-from .models import Pills
+from django.contrib.auth.decorators import login_required
+
+
+
+from .models import Pills, Like
+import json
 
 
 class PillListView(ListView):
@@ -28,3 +34,15 @@ class PillDetailView(DetailView):
 	model = Pills
 	template_name = 'pills/pill_detail.html'
 	# context_object_name = 'pills'
+
+
+@login_required
+def pill_like(request, pk):
+	pill = get_object_or_404(Pills, pk=pk)
+
+	pill_like, pill_like_created = pill.like_set.get_or_create(user=request.user)
+
+	if not pill_like_created:
+		pill_like.delete()
+
+	return redirect('pills:pill_list')
