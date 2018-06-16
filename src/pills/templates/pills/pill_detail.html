@@ -8,16 +8,16 @@
   <p class="lead">{{ object.editor_said }}</p>
   <img style="height: 80%; width: 100%; display: block;" src="{{ pills.image.url }}">
   <hr class="my-4">
-  <p>{{ object.description }}</p>
+  <p>{{ object.description|linebreaks }}</p>
 	<hr/>
 	<h3>효능</h3>
-	<p>{{ pills.benefit }}</p>
+	<p>{{ pills.benefit|linebreaks }}</p>
 	<hr/>
 	<h3>결핍 시</h3>
-	<p>{{ pills.shortage }}</p>
+	<p>{{ pills.shortage|linebreaks }}</p>
 	<hr/>
 	<h3>주의할 점</h3>
-	<p>{{ pills.careful }}</p>
+	<p>{{ pills.careful|linebreaks }}</p>
 		
 
   <p class="lead">

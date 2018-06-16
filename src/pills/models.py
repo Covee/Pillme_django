@@ -1,3 +1,5 @@
+from django.conf import settings
+
 from django.db import models
 from django.core.urlresolvers import reverse
 
@@ -31,6 +33,10 @@ class Pills(models.Model):
 	category_body	= models.ManyToManyField(Categories_Body)
 	category_gender	= models.ManyToManyField(Categories_Gender)
 	image			= models.ImageField(upload_to='upload_images/pills/%Y/%m/%d')
+	like_user_set	= models.ManyToManyField(settings.AUTH_USER_MODEL,
+												blank=True,
+												related_name='like_user_set',
+												through='Like')
 
 	def __str__(self):
 		return self.name
@@ -39,6 +45,14 @@ class Pills(models.Model):
 		return reverse('pills:pill_detail', args=[self.id])
 
 
+class Like(models.Model):
+	user 		= models.ForeignKey(settings.AUTH_USER_MODEL)
+	pills 		= models.ForeignKey(Pills)
+	created_at	= models.DateTimeField(auto_now_add=True)
+	updated_at	= models.DateTimeField(auto_now=True)
+
+	def __str__(self):
+		return {self.user, self.pills}
 
 
 
