@@ -4,8 +4,9 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import get_object_or_404, redirect, render
 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
-
+from django.views.decorators.http import require_POST
 
 from .models import Pills, Like
 import json
@@ -37,12 +38,24 @@ class PillDetailView(DetailView):
 
 
 @login_required
-def pill_like(request, pk):
+@require_POST	# POST method만 받음
+def pill_like(request):
+	pk = request.POST.get('pk', None)
 	pill = get_object_or_404(Pills, pk=pk)
 
 	pill_like, pill_like_created = pill.like_set.get_or_create(user=request.user)
 
 	if not pill_like_created:
 		pill_like.delete()
+		message = "좋아요 취소"
+	else:
+		message = "좋아요"
 
-	return redirect('pills:pill_list')
+	context = {
+				'like_count': pill.like_count,
+				'message': message,
+				'username': request.user.username
+	}
+
+	return HttpResponse(json.dumps(context))
+

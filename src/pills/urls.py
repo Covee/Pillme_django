@@ -8,6 +8,6 @@ from .views import PillListView, PillDetailView, pill_like
 urlpatterns = [
     url(r'^pill_list/$', PillListView.as_view(), name='pill_list'),
 	url(r'^pill_detail/(?P<pk>\d+)/$', PillDetailView.as_view(), name='pill_detail'),
-	url(r'^pill_list/(?P<pk>\d+)/like/$', views.pill_like, name='pill_like'),
+	url(r'^like/$', views.pill_like, name='pill_like'),
 
 ]

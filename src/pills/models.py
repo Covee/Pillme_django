@@ -44,6 +44,7 @@ class Pills(models.Model):
 	def get_absolute_url(self):
 		return reverse('pills:pill_detail', args=[self.id])
 
+	@property
 	def like_count(self):
 		return self.like_user_set.count()
 
