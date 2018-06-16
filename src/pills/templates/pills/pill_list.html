@@ -14,9 +14,9 @@
 			  		<div class="card-body">
 
 			  		<li>
-					    <a href="{% url 'pills:pill_like' pills.pk %}">{{ pills.like_user_set.count }} like{{ pills.like_user_set.count|pluralize }}</a>
+					    <a href="{% url 'pills:pill_like' pills.pk %}">{{ pills.like_count }} like{{ pills.like_count|pluralize }}</a>
 					</li>
-					
+
 			  			<h5 class="card-title" style="height: 45px;"">특징: {{ pills.feature }}</h5>
 			  			<h6 class="card-subtitle text-muted" style="height: 25px;">특별 코멘트: {{ pills.editor_said }}</h6>
 			  		</div>

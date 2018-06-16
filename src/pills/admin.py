@@ -23,3 +23,9 @@ admin.site.register(Like)
 
 class LikeAdmin(admin.ModelAdmin):
 	list_display = ['id','pills','user','created_at']
+
+	def get_actions(self, request):		# delete like
+		actions = super().get_actions(request)
+		if 'delete_selected' in actions:
+			del actions['delete_selected']
+		return actions

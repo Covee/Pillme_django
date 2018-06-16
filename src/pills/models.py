@@ -44,6 +44,9 @@ class Pills(models.Model):
 	def get_absolute_url(self):
 		return reverse('pills:pill_detail', args=[self.id])
 
+	def like_count(self):
+		return self.like_user_set.count()
+
 
 class Like(models.Model):
 	user 		= models.ForeignKey(settings.AUTH_USER_MODEL)
@@ -51,8 +54,6 @@ class Like(models.Model):
 	created_at	= models.DateTimeField(auto_now_add=True)
 	updated_at	= models.DateTimeField(auto_now=True)
 
-	def __str__(self):
-		return {self.user, self.pills}
 
 
 
