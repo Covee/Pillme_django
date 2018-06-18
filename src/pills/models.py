@@ -56,8 +56,18 @@ class Like(models.Model):
 	updated_at	= models.DateTimeField(auto_now=True)
 
 
+class Comment(models.Model):
+	pills 		= models.ForeignKey(Pills)
+	author 		= models.ForeignKey(settings.AUTH_USER_MODEL)
+	content 	= models.TextField(max_length=1000, null=False)
+	created_at	= models.DateTimeField(auto_now_add=True)
+	updated_at 	= models.DateTimeField(auto_now=True)
 
+	class Meta:
+		ordering = ['-id']	# 코멘트의 id값 순, 즉 순서대로 보여줌
 
+	def __str__(self):
+		return self.content
 
 
 
