@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.contrib import messages
 
 from django.views.generic import ListView, DetailView
 from django.shortcuts import get_object_or_404, redirect, render
@@ -34,8 +35,8 @@ class PillListView(ListView):
 
 
 @login_required
-def comment_new(request, pk):
-	pill = get_object_or_404(Pills, pk=pk)
+def comment_new(request, pill_pk):
+	pill = get_object_or_404(Pills, pk=pill_pk)
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
 		if form.is_valid():
@@ -45,6 +46,19 @@ def comment_new(request, pk):
 			comment.save()
 			return redirect("pills:pill_list")
 	return render(request, "pills/pill_list.html", {'form':form})
+
+
+@login_required
+def comment_delete(request, pill_pk, pk):
+	comment = get_object_or_404(Comment, pk=pk)
+	if request.method == 'POST' and request.user == comment.author:
+		comment.delete()
+		messages.success(request, '삭제했습니다.')
+		return redirect('pills:pill_list')
+
+	messages.warning('권한이 없습니다.')
+	return redirect('pills:pill_list')
+
 
 
 class PillDetailView(DetailView):

@@ -43,16 +43,27 @@
 			  		<div class="card-footer text-muted">
 			  			<h4 style="color: black;">댓글</h4>
 			  			{% for comment in pills.comment_set.all %}
-			  				<p> > {{ comment.author }} : {{ comment.content }}</p>
+			  				<p> > {{ comment.author }} : {{ comment.content }}
+			  				{% if user == comment.author %}
+				  				<form action="{% url 'pills:pill_comment_delete' pills.pk comment.pk %}" method="POST">{% csrf_token %}
+				  					<input type="submit" value="댓글삭제" onclick="return confirm('정말 삭제하시겠습니까?')">
+				  				</form>
+			  				{% endif %}
+			  				</p>
 			  			{% endfor %}
-		  				<form action="{% url 'pills:pill_comment' pills.pk %}" method="POST">{% csrf_token %}
-		  					<!-- {{ form.as_p }}   이부분 왜 안먹히지.. -->
-						    <div class="form-group">
-						    	<input type="text" class="form-control" placeholder="댓글을 입력하세요.">
-						    	<small class="form-text text-muted">심한 욕설이나 근거없는 비방은 자제해 주세요.</small>
-						    </div>
-		  					<input type="submit" value="댓글등록">
-			  			</form>
+
+			  			{% if user.is_authenticated %}
+			  				<form action="{% url 'pills:pill_comment' pills.pk %}" method="POST">{% csrf_token %}
+			  					<table>
+									{{ comment_form.as_table }}
+							    </table>
+							    <div class="form-group">
+							    	<input type="text" class="form-control" placeholder="댓글을 입력하세요.">
+							    	<small class="form-text text-muted">심한 욕설이나 근거없는 비방은 자제해 주세요.</small>
+							    </div>
+			  					<input type="submit" value="댓글등록">
+				  			</form>
+			  			{% endif %}
 			  		</div>
 		  		</div>
 		  	</div>
