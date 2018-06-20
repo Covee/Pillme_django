@@ -6,6 +6,15 @@
 
   <p class="lead">{{ object.feature }}</p>
   <p class="lead">{{ object.editor_said }}</p>
+
+    <p id="count-{{ pills.id }}">좋아요 {{ pills.like_count }}개</p>
+    <p id="like-user-{{ pills.id }}">
+    	좋아하는 유저 :
+    	{% for like_user in pills.like_user_set.all %}
+	    	{{ like_user.username }},
+	    {% endfor %}
+	</p>
+
   <img style="height: 80%; width: 100%; display: block;" src="{{ pills.image.url }}">
   <hr class="my-4">
   <p>{{ object.description|linebreaks }}</p>
