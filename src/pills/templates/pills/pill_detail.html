@@ -27,8 +27,17 @@
 	<hr/>
 	<h3>주의할 점</h3>
 	<p>{{ pills.careful|linebreaks }}</p>
-		
-
+	<hr/>
+  <h3>댓글</h3>
+  {% for comment in pills.comment_set.all %}
+    <p> > {{ comment.author }} : {{ comment.content }}</p>
+    {% if user == comment.author %}
+      <form action="{% url 'pills:pill_comment_delete' pills.pk comment.pk %}" method="POST">{% csrf_token %}
+        <input class="btn-outline-danger" type="submit" value="댓글삭제" onclick="return confirm('정말 삭제하시겠습니까?')">
+      </form>
+    {% endif %}
+    </p>
+  {% endfor %}
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">관련 자료</a>
     <a class="btn btn-primary btn-lg" href="#" role="button">목록으로</a>

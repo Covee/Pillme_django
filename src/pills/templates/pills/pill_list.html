@@ -41,6 +41,8 @@
 
 	  		</div>
 	  		<div class="card-footer text-muted">
+	  			<div id="comment-list-ajax-pill{{ pills.id }}"></div>
+
 	  			<h4 style="color: black;">댓글</h4>
 	  			{% for comment in pills.comment_set.all %}
 	  				<p> > {{ comment.author }} : {{ comment.content }}
@@ -53,16 +55,10 @@
 	  			{% endfor %}
 
 	  			{% if user.is_authenticated %}
-	  				<form action="{% url 'pills:pill_comment' pills.pk %}" method="POST">{% csrf_token %}
-	  					<table>
-							{{ comment_form.as_table }}
-					    </table>
-					    <div class="form-group">
-					    	<input type="text" class="form-control" placeholder="댓글을 입력하세요.">
-					    	<small class="form-text text-muted">심한 욕설이나 근거없는 비방은 자제해 주세요.</small>
-					    </div>
-	  					<input class="btn-success" type="submit" value="댓글등록">
-		  			</form>
+	  				<li id="add-comment-pill{{ pills.id }}">
+	  				{{ comment_form }}
+	  				<input type="button" class="add-comment" name="{{ pills.id }}" value="댓글등록">
+
 	  			{% endif %}
 	  		</div>
   		</div>
@@ -82,6 +78,8 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+
+	//// 좋아요 Ajax ////
   $(".like").click(function(){
 	var pk = $(this).attr('name')
 	$.ajax({
@@ -110,6 +108,37 @@
         //  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
       },
 	});
+  })
+
+
+	//// 댓글등록 Ajax ////
+  $(document).on('click', '.add-comment', function(){
+    var pk = $(this).attr('name');
+    var content = $("#add-comment-pill"+pk+">input[type=text]").val();
+    if(content.length > 140){
+      alert("댓글은 최대 140자 입력 가능합니다. 현재 글자수 :"+content.length)
+      return;
+  	}
+    $.ajax({
+      type: "POST",
+      url: "{% url 'pills:pill_comment_new' %}",
+      data: {
+        'pk': pk,
+        'content':content,
+        'csrfmiddlewaretoken': '{{ csrf_token }}',
+      },
+      dataType: "html",
+
+      success: function(data, textStatus, jqXHR){
+        alert("댓글을 추가하였습니다.");
+        $("#add-comment-pill"+pk+">input[type=text]").val("");
+        $("#comment-list-ajax-pill"+pk).append(data);
+      },
+      error: function(response){
+        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        alert("문제가 발생했습니다.");
+      },
+    })
   })
 </script>
 

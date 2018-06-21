@@ -1,0 +1,18 @@
+{% for pill in object_list %}
+
+<div id="comment-list-ajax-pill{{ pills.id }}"></div>
+
+  {% for comment in pills.comment_set.all %}
+  	<li>{{ comment.author }} : {{ comment.content }} </li>
+  {% endfor %}
+
+  {% if user.is_authenticated %}
+  <li id="add-comment-pill{{ pills.id }}">
+      {{ comment_form }}
+      <input type="button" class="add-comment" name="{{ pills.id }}" value="댓글등록">
+  </li>
+  {% endif %}
+<hr>
+
+
+{% endfor %}

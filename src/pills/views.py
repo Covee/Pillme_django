@@ -35,8 +35,10 @@ class PillListView(ListView):
 
 
 @login_required
-def comment_new(request, pill_pk):
-	pill = get_object_or_404(Pills, pk=pill_pk)
+def comment_new(request):
+	pk = request.POST.get('pk')
+	pill = get_object_or_404(Pills, pk=pk)
+	form = CommentForm
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
 		if form.is_valid():
@@ -44,8 +46,8 @@ def comment_new(request, pill_pk):
 			comment.author = request.user
 			comment.pills = pill
 			comment.save()
-			return redirect("pills:pill_list")
-	return render(request, "pills/pill_list.html", {'form':form})
+			return render(request, 'pills/comment_new_ajax.html', {'comment':comment, 'form':form,})
+	return redirect("pills:pill_list")
 
 
 @login_required
