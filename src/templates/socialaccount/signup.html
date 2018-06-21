@@ -5,10 +5,17 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+
+</br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center">
+
     <h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
-{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}
+	{{provider_name}} 를(을) 통해 [PILL ME]에 가입합니다.</p>
+<p>다음 정보들을 입력해 주시고 회원가입을 마치시기 바랍니다.{% endblocktrans %}</p>
 
 <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
   {% csrf_token %}
@@ -16,7 +23,7 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
 </form>
 
 {% endblock %}

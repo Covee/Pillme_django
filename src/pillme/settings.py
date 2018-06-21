@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'pills',
     'accounts',
     'posts',
+    'members',
     
 
 ]
@@ -143,6 +144,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
 
+# 소셜 연결 하면 바로 받은 정보들만 가지고 회원 가입을 시키는 옵션. 내가 원하는 정보들을 추가로 받기 위해 False 설정 함.
+SOCIALACCOUNT_AUTO_SIGNUP = False
+ACCOUNT_SIGNUP_FORM_CLASS = 'members.forms.SignupForm'
 
 
 # Internationalization
