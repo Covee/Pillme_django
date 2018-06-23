@@ -9,9 +9,11 @@
 	<p>이메일 : {{ user.email }}</p>
 		<p>보관중인 약물 : 
 		{% for liked in user.like_set.all %}
-			{{ liked.pills }},
+			<a href="{% url 'pills:pill_detail' liked.pills.pk %}">{{ liked.pills }}</a>,
 		{% endfor %}
 		</p>
+
+		<p>비밀번호 변경</p>
 	</div>
 	
 </div>
