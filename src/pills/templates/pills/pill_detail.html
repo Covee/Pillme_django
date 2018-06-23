@@ -11,8 +11,8 @@
     <p id="like-user-{{ pills.id }}">
     	좋아하는 유저 :
     	{% for like_user in pills.like_user_set.all %}
-	    	{{ like_user.username }},
-	    {% endfor %}
+        <a href="{% url 'profiles:user_profile' like_user.pk %}">{{ like_user.username }}</a>,	    
+      {% endfor %}
 	</p>
 
   <img style="height: 80%; width: 100%; display: block;" src="{{ pills.image.url }}">
@@ -30,7 +30,7 @@
 	<hr/>
   <h3>댓글</h3>
   {% for comment in pills.comment_set.all %}
-    <p> > {{ comment.author }} : {{ comment.content }}</p>
+    <p> > <a href="{% url 'profiles:user_profile' comment.author.pk %}">{{ comment.author }}</a> : {{ comment.content }}</p>
     {% if user == comment.author %}
       <form action="{% url 'pills:pill_comment_delete' pills.pk comment.pk %}" method="POST">{% csrf_token %}
         <input class="btn-outline-danger" type="submit" value="댓글삭제" onclick="return confirm('정말 삭제하시겠습니까?')">

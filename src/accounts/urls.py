@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^(?P<pk>[\w.@+-]+)/$', UserDetailView.as_view(), name='user_profile'),
 	# url(r'^register/$', UserRegisterView.as_view(), name='register'),
 	
+	
 ]
