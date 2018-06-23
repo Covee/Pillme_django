@@ -5,15 +5,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center">
-	<h1>{{ user.username }}님의 프로필</h1>
+	<p>유저 이름: {{ user.username }}</p>
 	<p>이메일 : {{ user.email }}</p>
-		<p>보관중인 약물 : 
-		{% for liked in user.like_set.all %}
-			{{ liked.pills }},
-		{% endfor %}
-		</p>
+	<p>보관중인 약물 : {{ }}</p>
 	</div>
-	
 </div>
 </div>
 

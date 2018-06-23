@@ -55,6 +55,9 @@ class Like(models.Model):
 	created_at	= models.DateTimeField(auto_now_add=True)
 	updated_at	= models.DateTimeField(auto_now=True)
 
+	def __str__(self):
+		return [self.pills, self.user]
+
 
 class Comment(models.Model):
 	pills 		= models.ForeignKey(Pills)

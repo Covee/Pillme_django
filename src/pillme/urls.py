@@ -14,6 +14,9 @@ urlpatterns = [
     
     url(r'^accounts/', include('allauth.urls')),  # for allauth
 
+    url(r'^profiles/', include('accounts.urls', namespace='profiles')),
+
+
 	# url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 	url(r'^freeboard/', include('posts.urls', namespace='freeboard')),
 
