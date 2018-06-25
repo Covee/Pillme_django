@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ post.id }}</td>
                         <td>{{ post.title }}</td>
-                        <td>{{ post.user }}</td>
+                        <td><a href="{% url 'profiles:user_profile' post.author.pk %}">{{ post.author }}</a></td>
                         <td>{{ post.timestamp }}</td>
                         <td>조회수퀴리만들기</td>
                     </tr>
