@@ -16,8 +16,12 @@
   <p class="lead">{% get_hit_count for post %}</p>
 
 
-  {% if post.images == True %}
-    <img style="height: 80%; width: 100%; display: block;" src="">
+  {% if post.images %}
+    <img style="height: 80%; width: 100%; display: block;" src="{{ post.images.url }}">
+  {% endif %}
+
+  {% if post.files %}
+    <img style="height: 80%; width: 100%; display: block;" src="{{ post.files.url }}">
   {% endif %}
 
   <hr class="my-4">
