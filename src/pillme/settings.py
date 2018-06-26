@@ -191,3 +191,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR)
+
+# hitcount의 세션이 유지되어 있는 시간. 즉, 설정한 시간이 지나면 세션이 사라지고 다시 카운트를 올릴 수 있음.
+# seconds, minutes, hours, days 이런식으로 설정
+HITCOUNT_KEEP_HIT_ACTIVE = { 'hours': 1 }
+
+
+
