@@ -18,16 +18,17 @@
                     <th>조회수</th>
                 </tr>
             </thead>
+            {% load hitcount_tags %}
             {% for post in object_list %}
-            <tbody>
-                    <tr>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.title }}</td>
-                        <td><a href="{% url 'profiles:user_profile' post.author.pk %}">{{ post.author }}</a></td>
-                        <td>{{ post.timestamp }}</td>
-                        <td>조회수퀴리만들기</td>
-                    </tr>
-            </tbody>
+	            <tbody>
+	                    <tr>
+	                        <td>{{ post.id }}</td>
+	                        <td>{{ post.title }}</td>
+	                        <td><a href="{% url 'profiles:user_profile' post.author.pk %}">{{ post.author }}</a></td>
+	                        <td>{{ post.timestamp }}</td>
+	                        <td>{% get_hit_count for post %}</td>
+	                    </tr>
+	            </tbody>
             {% endfor %}
         </table>
         <br/>
