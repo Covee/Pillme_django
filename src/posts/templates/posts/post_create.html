@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br/>
+
+<h1 style="text-align: center;">자유게시판</h1>
+</br>
+
+<div class="jumbotron">
+  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="글쓰기" />
+  </form>
+  <br/>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'freeboard:post_list' %}" role="button">목록으로</a>
+  </p>
+</div>
+
+
+{% endblock %}
+

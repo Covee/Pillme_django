@@ -7,7 +7,7 @@ from hitcount.models import HitCount, HitCountMixin
 
 class Post(models.Model, HitCountMixin):
 	title		= models.CharField(max_length=50, blank=False)
-	author		= models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False)
+	author		= models.ForeignKey(settings.AUTH_USER_MODEL, null=False)
 	content		= models.TextField(max_length=5000, blank=False, null=False)
 	files		= models.FileField(null=True, blank=True)
 	images		= models.ImageField(null=True, blank=True)
@@ -22,5 +22,5 @@ class Post(models.Model, HitCountMixin):
 		ordering = ['-id']
 
 	def __str__(self):
-		return "Post title: %s" % self.title
+		return self.title
 
