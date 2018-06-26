@@ -23,7 +23,7 @@
 	            <tbody>
 	                    <tr>
 	                        <td>{{ post.id }}</td>
-	                        <td>{{ post.title }}</td>
+	                        <td><a href="{% url 'freeboard:post_detail' post.pk %}">{{ post.title }}</a></td>
 	                        <td><a href="{% url 'profiles:user_profile' post.author.pk %}">{{ post.author }}</a></td>
 	                        <td>{{ post.timestamp }}</td>
 	                        <td>{% get_hit_count for post %}</td>

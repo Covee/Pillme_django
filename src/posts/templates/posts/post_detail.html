@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load hitcount_tags %}
+
+{% block content %}
+<br/>
+
+<h1 style="text-align: center;">자유게시판</h1>
+</br>
+
+
+<div class="jumbotron">
+  <h1 class="display-3">{{ object.title }}</h1>
+
+  <p class="lead">{{ post.author }}</p>
+  <p class="lead">{{ post.timestamp }}</p>
+  <p class="lead">{% get_hit_count for post %}</p>
+
+
+  {% if post.image == True %}
+    <img style="height: 80%; width: 100%; display: block;" src="#">
+  {% endif %}
+
+  <hr class="my-4">
+  <p>{{ post.content|linebreaks }}</p>
+    <hr/>
+    <h3>뭐 넣지</h3>
+    <p></p>
+    <hr/>
+
+  <h3>댓글</h3>
+  <br/>
+ 
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'freeboard:post_list' %}" role="button">목록으로</a>
+  </p>
+</div>
+
+
+{% endblock %}
+

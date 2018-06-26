@@ -18,6 +18,12 @@ class PostListView(ListView):
 	template_name = 'posts/post_list.html'
 
 
+class PostDetailView(DetailView):
+	model = Post
+	
+	# template_name = 'posts/post_detail.html'
+
+
 class PostMixinDetailView(object):
 	model = Post
 
@@ -37,9 +43,9 @@ class PostMixinDetailView(object):
 #         return ensure_csrf_cookie(view)
 
 
-class PostDetailView(PostMixinDetailView, HitCountDetailView):
-    # Generic hitcount class based view.
-    pass
+# class PostDetailView(PostMixinDetailView, HitCountDetailView):
+#     # Generic hitcount class based view.
+#     pass
 
 
 class PostCountHitDetailView(HitCountDetailView):
