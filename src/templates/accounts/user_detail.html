@@ -21,7 +21,12 @@
 			<a href="{% url 'pills:pill_detail' liked.pills.pk %}">{{ liked.pills }}</a>,
 		{% endfor %}
 	</p>
-	<p>내가 작성한 글: </p>
+	<p>내가 작성한 글 : 
+		{% for mypost in user.post_set.all %}
+			<a href="{% url 'freeboard:post_detail' mypost.pk %}">{{ mypost.title }}</a> /
+		{% endfor %}
+
+	</p>
 
 	</div>
 	
