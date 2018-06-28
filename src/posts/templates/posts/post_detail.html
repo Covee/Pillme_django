@@ -13,7 +13,7 @@
 
   <p class="lead">{{ post.author }}</p>
   <p class="lead">{{ post.timestamp }}</p>
-  <p class="lead">{% get_hit_count for post %}</p>
+  <p class="lead">조회수: {% get_hit_count for post %}</p>
 
 
   {% if post.images %}
@@ -38,6 +38,14 @@
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="{% url 'freeboard:post_list' %}" role="button">목록으로</a>
   </p>
+
+    {% if request.user == post.author %}
+  <p>
+    <a class="btn btn-danger" href="{% url 'freeboard:post_delete' post.pk %}" role="button">게시글 삭제</a>
+    <!-- <a class="btn btn-primary" data-toggle="modal" href="{% url 'freeboard:post_delete' post.pk %}" data-target="#form-modal">게시글 삭제</a> -->
+  </p>
+    {% endif %}
+
 </div>
 
 

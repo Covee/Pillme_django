@@ -97,5 +97,3 @@ def pill_like(request):
 
 
 
-
-

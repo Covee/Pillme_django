@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from hitcount.views import HitCountDetailView
 
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, FormView
+from django.views.generic import TemplateView, ListView, DetailView, DeleteView, CreateView, FormView
 
 from .models import Post
 from .forms import PostCreateForm
@@ -23,8 +23,13 @@ class PostCreateView(CreateView):
 		return {
 				"author": self.request.user
 				}
-	
 
+
+class PostDeleteView(DeleteView):
+	model = Post
+	template_name = 'posts/post_delete.html'
+	success_url = reverse_lazy('freeboard:post_list')
+	
 
 class PostListView(ListView):
 	model = Post
