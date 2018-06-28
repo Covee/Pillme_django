@@ -41,6 +41,13 @@
 
     {% if request.user == post.author %}
   <p>
+    <a class="btn btn-success" href="{% url 'freeboard:post_update' post.pk %}" role="button">게시글 수정</a>
+  </p>
+    {% endif %}
+
+
+    {% if request.user == post.author %}
+  <p>
     <a class="btn btn-danger" href="{% url 'freeboard:post_delete' post.pk %}" role="button">게시글 삭제</a>
     <!-- <a class="btn btn-primary" data-toggle="modal" href="{% url 'freeboard:post_delete' post.pk %}" data-target="#form-modal">게시글 삭제</a> -->
   </p>

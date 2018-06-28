@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from hitcount.views import HitCountDetailView
 
-from django.views.generic import TemplateView, ListView, DetailView, DeleteView, CreateView, FormView
+from django.views.generic import TemplateView, ListView, DetailView, DeleteView, CreateView, FormView, UpdateView
 
 from .models import Post
 from .forms import PostCreateForm
@@ -40,6 +40,14 @@ class PostDetailView(DetailView):
 	model = Post
 
 	# template_name = 'posts/post_detail.html'
+
+
+class PostUpdateView(UpdateView):
+	model = Post
+	success_url 	= reverse_lazy('freeboard:post_list')
+	template_name 	= 'posts/post_create.html'
+	fields 			= ['title', 'content', 'images', 'files',]
+
 
 
 class PostMixinDetailView(object):
