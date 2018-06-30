@@ -32,9 +32,11 @@
             {% endfor %}
         </table>
         <br/>
-        <div>            
-            <a href='{% url "freeboard:post_create" %}' class="btn btn-primary">글쓰기</a>            
-        </div>
+        {% if user.is_authenticated %}
+	        <div>            
+	            <a href='{% url "freeboard:post_create" %}' class="btn btn-primary">글쓰기</a>            
+	        </div>
+        {% endif %}
     </form>
 </div>
 
