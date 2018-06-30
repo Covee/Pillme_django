@@ -29,8 +29,9 @@
 	  		<div class="card-body">
 	 			<a href="#" class="card-link">Card link</a>
 	  			<a href="#" class="card-link">관련기사 링크</a>
-
-	  			<p><input type="button" class="like badge-pill badge-danger" name="{{ pills.id }}" value="좋아요"></p>
+	  			{% if user.is_authenticated %}
+	  				<p><input type="button" class="like badge-pill badge-danger" name="{{ pills.id }}" value="좋아요"></p>
+	  			{% endif %}
 			    <p id="count-{{ pills.id }}">좋아요 {{ pills.like_count }}개</p>
 			    <p id="like-user-{{ pills.id }}">
 			    	좋아하는 유저 :
