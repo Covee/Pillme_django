@@ -1,3 +1,16 @@
 from django.shortcuts import render
 
-# Create your views here.
+from hitcount.views import HitCountDetailView
+
+from django.views.generic import ListView
+from .models import gPost
+
+
+class gPostListView(ListView):
+	model = gPost
+	template_name = 'goodtoknow/post_list.html'
+
+
+class PostCountHitDetailView(HitCountDetailView):
+    model = gPost        # your model goes here
+    count_hit = True    # set to True if you want it to try and count the hit

@@ -19,6 +19,8 @@ urlpatterns = [
 
 	# url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 	url(r'^freeboard/', include('posts.urls', namespace='freeboard')),
+	url(r'^goodtoknow/', include('goodtoknow.urls', namespace='goodtoknow')),
+
 
 
 ] 

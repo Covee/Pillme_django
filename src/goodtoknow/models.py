@@ -4,9 +4,9 @@ from django.contrib.contenttypes.fields import GenericRelation
 from hitcount.models import HitCount, HitCountMixin
 
 
-class Post(models.Model, HitCountMixin):
+class gPost(models.Model, HitCountMixin):
 	title		= models.CharField(max_length=50, blank=False)
-	content		= models.TextField(max_length=5000, blank=False, null=False)
+	content		= models.TextField(max_length=20000, blank=False, null=False)
 	files		= models.FileField(null=True, blank=True, upload_to='upload_images/goodtoknow/%Y/%m')
 	images		= models.ImageField(null=True, blank=True, upload_to='upload_images/goodtoknow/%Y/%m')
 	timestamp 	= models.DateTimeField(auto_now_add=True)

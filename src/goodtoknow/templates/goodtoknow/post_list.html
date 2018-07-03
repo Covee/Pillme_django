@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br/>
+
+<h1 style="text-align: center;">지식 창고</h1>
+
+</br>
+<div class="container">
+    <form method="POST">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>글 번호</th>
+                    <th>제  목</th>
+                    <th>날 짜</th>
+                    <th>조회수</th>
+                    <th>추 천</th>
+                </tr>
+            </thead>
+            {% load hitcount_tags %}
+            {% for post in object_list %}
+	            <tbody>
+	                    <tr>
+	                        <td>{{ post.id }}</td>
+	                        <td><a href="#">{{ post.title }}</a></td>
+	                        <td>{{ post.timestamp }}</td>
+	                        <td>{% get_hit_count for post %}</td>
+                            <td> 추천갯수 </td>
+	                    </tr>
+	            </tbody>
+            {% endfor %}
+        </table>
+        <br/>
+    </form>
+</div>
+
+
+{% endblock %}
