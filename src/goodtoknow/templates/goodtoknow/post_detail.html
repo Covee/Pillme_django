@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load hitcount_tags %}
+
+{% block content %}
+<br/>
+
+<h1 style="text-align: center;">지식 창고</h1>
+</br>
+
+
+<div class="jumbotron">
+  <h1 class="display-3">{{ gpost.title }}</h1>
+
+  <p class="lead">{{ gpost.timestamp }}</p>
+  <p class="lead">조회수: {% get_hit_count for gpost %}</p>
+
+
+  {% if gpost.images %}
+    <img style="height: 80%; width: 100%; display: block;" src="{{ post.images.url }}">
+  {% endif %}
+
+  {% if gpost.files %}
+    <img style="height: 80%; width: 100%; display: block;" src="{{ post.files.url }}">
+  {% endif %}
+
+  <hr class="my-4">
+  <p>{{ gpost.content|linebreaks }}</p>
+    <hr/>
+    <h3>뭐 넣지</h3>
+    <p></p>
+    <hr/>
+
+  <h3>댓글</h3>
+  <br/>
+ 
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'goodtoknow:post_list' %}" role="button">목록으로</a>
+  </p>
+
+</div>
+
+
+{% endblock %}
+

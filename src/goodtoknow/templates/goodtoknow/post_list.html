@@ -23,7 +23,7 @@
 	            <tbody>
 	                    <tr>
 	                        <td>{{ post.id }}</td>
-	                        <td><a href="#">{{ post.title }}</a></td>
+	                        <td><a href="{% url 'goodtoknow:post_detail' post.pk %}">{{ post.title }}</a></td>
 	                        <td>{{ post.timestamp }}</td>
 	                        <td>{% get_hit_count for post %}</td>
                             <td> 추천갯수 </td>
