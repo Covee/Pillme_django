@@ -19,13 +19,13 @@
                 </tr>
             </thead>
             {% load hitcount_tags %}
-            {% for post in object_list %}
+            {% for gpost in object_list %}
 	            <tbody>
 	                    <tr>
-	                        <td>{{ post.id }}</td>
-	                        <td><a href="{% url 'goodtoknow:post_detail' post.pk %}">{{ post.title }}</a></td>
-	                        <td>{{ post.timestamp }}</td>
-	                        <td>{% get_hit_count for post %}</td>
+	                        <td>{{ gpost.id }}</td>
+	                        <td><a href="{% url 'goodtoknow:post_detail' gpost.pk %}">{{ gpost.title }}</a></td>
+	                        <td>{{ gpost.timestamp }}</td>
+	                        <td>{% get_hit_count for gpost %}</td>
                             <td> 추천갯수 </td>
 	                    </tr>
 	            </tbody>

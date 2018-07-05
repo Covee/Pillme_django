@@ -11,12 +11,13 @@ class gPostListView(ListView):
 	template_name = 'goodtoknow/post_list.html'
 
 
-class PostCountHitDetailView(HitCountDetailView):
+class gPostCountHitDetailView(HitCountDetailView):
     model = gPost        # your model goes here
     count_hit = True    # set to True if you want it to try and count the hit
 
 
-class gPostDetailView(DetailView):
-	model = gPost
-	template_name = 'goodtoknow/post_detail.html'
+
+# class gPostDetailView(DetailView):
+# 	model = gPost
+# 	template_name = 'goodtoknow/gpost_detail.html'
 
