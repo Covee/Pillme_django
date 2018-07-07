@@ -24,3 +24,14 @@ class Post(models.Model, HitCountMixin):
 	def __str__(self):
 		return self.title
 
+
+
+
+
+class Introduce(models.Model):
+	title		= models.CharField(max_length=50, blank=False)
+	content 	= models.TextField(max_length=20000, blank=False, null=False)
+	images 		= models.ImageField(null=True, blank=True, upload_to='upload_images/introduce/%Y/%m')
+
+	def __str__(self):
+		return self.title

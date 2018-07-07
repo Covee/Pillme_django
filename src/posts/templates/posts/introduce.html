@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+
+<h1 style="text-align: center;">저희 PAGE를 소개합니다</h1>
+</br>
+
+
+<div class="jumbotron">
+  <h1 class="display-3" style="text-align: center;">{{ introduce.title }}</h1><br/>
+
+  <p class="lead" style="text-align: center;">{{ introduce.content|linebreaks }}</p>
+
+{% endblock %}

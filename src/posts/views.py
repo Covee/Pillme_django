@@ -5,7 +5,7 @@ from hitcount.views import HitCountDetailView
 
 from django.views.generic import TemplateView, ListView, DetailView, DeleteView, CreateView, FormView, UpdateView
 
-from .models import Post
+from .models import Post, Introduce
 from .forms import PostCreateForm
 
 
@@ -77,4 +77,11 @@ class PostMixinDetailView(object):
 class PostCountHitDetailView(HitCountDetailView):
     model = Post        # your model goes here
     count_hit = True    # set to True if you want it to try and count the hit
+
+
+
+class IntroduceView(DetailView):
+	model = Introduce
+	template_name = 'posts/introduce.html'
+
 
