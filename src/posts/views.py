@@ -1,12 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 
 from hitcount.views import HitCountDetailView
+
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from django.http import HttpResponse
 
 from django.views.generic import TemplateView, ListView, DetailView, DeleteView, CreateView, FormView, UpdateView
 
 from .models import Post, Introduce
 from .forms import PostCreateForm
+import json
+
 
 
 # class HomeView(TemplateView):
@@ -77,6 +83,30 @@ class PostMixinDetailView(object):
 class PostCountHitDetailView(HitCountDetailView):
     model = Post        # your model goes here
     count_hit = True    # set to True if you want it to try and count the hit
+
+
+
+@login_required
+@require_POST	# POST method만 받음
+def post_like(request):
+	pk = request.POST.get('pk', None)
+	post = get_object_or_404(Post, pk=pk)
+
+	post_like, post_like_created = post.likepost_set.get_or_create(user=request.user)
+
+	if not post_like_created:
+		post_like.delete()
+		message = "좋아요 취소"
+	else:
+		message = "좋아요"
+
+	context = {
+				'like_count': post.like_count,
+				'message': message,
+				'username': request.user.username
+	}
+
+	return HttpResponse(json.dumps(context))
 
 
 

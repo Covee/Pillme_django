@@ -14,6 +14,10 @@ class Post(models.Model, HitCountMixin):
 	timestamp 	= models.DateTimeField(auto_now_add=True)
 	hit_count 	= GenericRelation(HitCount, object_id_field='object_pk', 
 											related_query_name='hit_count_generic_relation')
+	likes 		= models.ManyToManyField(settings.AUTH_USER_MODEL,
+												blank=True,
+												related_name='like_post',
+												through='LikePost')
 
 	# comments
 	# likes
@@ -24,7 +28,19 @@ class Post(models.Model, HitCountMixin):
 	def __str__(self):
 		return self.title
 
+	@property
+	def like_count(self):
+		return self.likes.count()
 
+
+class LikePost(models.Model):
+	user 		= models.ForeignKey(settings.AUTH_USER_MODEL)
+	post 		= models.ForeignKey(Post)
+	created_at	= models.DateTimeField(auto_now_add=True)
+	updated_at	= models.DateTimeField(auto_now=True)
+
+	def __str__(self):
+		return [self.post, self.user]
 
 
 
