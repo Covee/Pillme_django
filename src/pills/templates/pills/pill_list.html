@@ -94,9 +94,8 @@
 
       success: function(response){ // 성공시 - 좋아요, 유저 목록 변경
       	alert(response.message);
-      	$("#count-"+pk).html(response.like_count+"개");
+      	$("#count-"+pk).html("좋아요 "+response.like_count+"개");
 
-      	var users = $("#like-user-"+pk).text();
 
       	if(users.indexOf(response.username) != -1){
       		$("#like-user-"+pk).text(users.replace(response.username, ""));
