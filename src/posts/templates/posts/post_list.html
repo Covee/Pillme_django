@@ -16,6 +16,7 @@
                     <th>작성자</th>
                     <th>날 짜</th>
                     <th>조회수</th>
+                    <th>추 천</th>
                 </tr>
             </thead>
             {% load hitcount_tags %}
@@ -27,6 +28,7 @@
 	                        <td><a href="{% url 'profiles:user_profile' post.author.pk %}">{{ post.author }}</a></td>
 	                        <td>{{ post.timestamp }}</td>
 	                        <td>{% get_hit_count for post %}</td>
+                            <td>{{ post.like_count }}</td>
 	                    </tr>
 	            </tbody>
             {% endfor %}

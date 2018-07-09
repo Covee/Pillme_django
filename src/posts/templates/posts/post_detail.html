@@ -17,9 +17,9 @@
 
 
   {% if user.is_authenticated %}
-      <p><input type="button" class="like badge-post badge-danger" name="{{ post.id }}" value="좋아요"></p>
+      <p><input type="button" class="like badge-post badge-danger" name="{{ post.id }}" value="추천"></p>
     {% endif %}
-    <p id="count-{{ post.id }}">좋아요 {{ post.like_count }}개</p>
+    <p id="count-{{ post.id }}">추천 : {{ post.like_count }}개</p>
     <p id="like-user-{{ post.id }}"></p>
 
 
