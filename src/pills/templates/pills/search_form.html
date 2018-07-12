@@ -1,5 +1,5 @@
 	<div class="container-fluid">
-		<form method="GET" action="{% url 'pills:pill_list' %}">
+		<form id='search-form' method="GET" action="{% url 'pills:pill_list' %}">
 		  	<div class="form-row">
 			    <div class="col-sm-11">
 			    	<input type="text" name="q" value="{{ request.GET.q }}" class="form-control mr-sm-3" placeholder="영양제 검색">
