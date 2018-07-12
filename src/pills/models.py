@@ -23,13 +23,14 @@ class Categories_Gender(models.Model):
 
 class Pills(models.Model):
 	name			= models.CharField(max_length=20, null=False)
+	english_name 	= models.CharField(max_length=30, null=True)
 	feature			= models.TextField(max_length=50, null=True)
 	editor_said		= models.TextField(max_length=50, null=True)
-	description		= models.TextField(max_length=2000)
-	where_it_from	= models.TextField(max_length=2000)
-	benefit			= models.TextField(max_length=2000)
-	shortage		= models.TextField(max_length=2000)
-	careful			= models.TextField(max_length=2000)
+	description		= models.TextField(max_length=20000)
+	where_it_from	= models.TextField(max_length=20000)
+	benefit			= models.TextField(max_length=20000)
+	shortage		= models.TextField(max_length=20000)
+	careful			= models.TextField(max_length=20000)
 	category_body	= models.ManyToManyField(Categories_Body)
 	category_gender	= models.ManyToManyField(Categories_Gender)
 	image			= models.ImageField(upload_to='upload_images/pills/%Y/%m/%d')
@@ -57,6 +58,9 @@ class Like(models.Model):
 
 	def __str__(self):
 		return [self.pills, self.user]
+
+	# def get_user_liked(self, pk):
+		
 
 
 class Comment(models.Model):

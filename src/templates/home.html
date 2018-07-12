@@ -22,10 +22,16 @@
   	<div class='container'>
   		<div class="row">
   		{% for pills in object_list %}
-  			<div class="col-lg-4">
-			  	<div class="card mb-3" style="width: 18rem;">
-			  		<a href="{{ pills.get_absolute_url }}"><h3 class="card-header" style="text-align: center;">{{ pills.name }}</h3></a>
-			  		<div class="card-body">
+		<div class="col-lg-4">
+	  	<div class="card mb-3" style="width: 19rem;">
+	  		<a style="text-decoration: none;" onmouseover="this.style.color='brown'" onmouseout="this.style.color='black'" 
+	  		href="{{ pills.get_absolute_url }}">
+	  			<h2 class="card-header" style="text-align: center;">{{ pills.name }}
+	  			<p style="font-size: 20px; color: gray;">[{{ pills.english_name }}]</p>
+	  			</h2>
+	  		</a>
+	  		<div class="card-body">
+	  			
 			  			<h5 class="card-title" style="height: 45px;"">특징: {{ pills.feature }}</h5>
 			  			<h6 class="card-subtitle text-muted" style="height: 25px;">특별 코멘트: {{ pills.editor_said }}</h6>
 			  		</div>
