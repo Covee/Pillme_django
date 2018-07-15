@@ -50,6 +50,7 @@ class Pills(models.Model):
 		return self.like_user_set.count()
 
 
+
 class Like(models.Model):
 	user 		= models.ForeignKey(settings.AUTH_USER_MODEL)
 	pills 		= models.ForeignKey(Pills)
@@ -61,7 +62,6 @@ class Like(models.Model):
 
 	# def get_user_liked(self, pk):
 		
-
 
 class Comment(models.Model):
 	pills 		= models.ForeignKey(Pills)
@@ -86,11 +86,6 @@ class Comment(models.Model):
 	# category_body	/	신체부위. ex) 시력, 혈관, 간
 	# category_Gender	/	성별 추천 영양제
 	# 복용시 주의사항, 복용법, 관련정보, 추천 링크 등 필요함
-	# 의견(코멘트)
 	# 하트(얼마나 이 영양제를 추천하는가? 인스타그램 좋아요 같은 것 필요)
 	# 관련 추천 제품 보여주기.
 
-
-
-	
-	# 파일 저장되는 경로 설정 어떻게 할지 구체적으로 생각 해보기.

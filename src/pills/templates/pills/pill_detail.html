@@ -14,6 +14,7 @@
         <a href="{% url 'profiles:user_profile' like_user.pk %}">{{ like_user.username }}</a>,	    
       {% endfor %}
 	</p>
+  <p>카테고리 : {% for body in pills.category_body.all %} {{ body }} | {% endfor %}</p>
 
   <img style="height: 80%; width: 100%; display: block;" src="{{ pills.image.url }}">
   <hr class="my-4">
