@@ -4,12 +4,13 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from .views import home_view
+from .views import home_view, navbar
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_view, name='home'),
+	url(r'^navbar/$', navbar, name='navbar'),
     url(r'^pills/', include("pills.urls", namespace="pills")),
     
     url(r'^accounts/', include('allauth.urls')),  # for allauth

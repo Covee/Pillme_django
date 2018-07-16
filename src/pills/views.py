@@ -29,9 +29,29 @@ class PillListView(ListView):
 		query = self.request.GET.get("q", None)
 		if query is not None:
 			qs = qs.filter(
-					Q(name__icontains=query)
+					Q(name__icontains=query) | Q(category_body__name__icontains=query)
 				)
 		return qs
+
+
+# def PillCategory_SearchList(request):
+# 	qs = Pills.objects.prefetch_related('category_body').all()
+# 	query = self.request.GET.get("q", None)
+# 	if query is not None:
+# 		qs = qs.filter(
+# 				Q(name__icontains=query)
+# 				)
+# 		return qs
+
+# 	context = {
+# 				'qs' : qs,
+
+# 	}
+
+# 	return render(request, "categorysearch.html", context)
+
+
+
 
 
 @login_required
@@ -90,7 +110,6 @@ def pill_like(request):
 	}
 
 	return HttpResponse(json.dumps(context))
-
 
 
 

@@ -13,10 +13,20 @@
 				<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
 					<a class="dropdown-item" href="{% url 'pills:pill_list' %}">전체 보기</a>
 					<div class="dropdown-divider"></div>
+
+
+  					{% for body in object_list %}
+  						{% for part in body.category_body.distinct %}
+							<a class="dropdown-item" href="#">{{ part.name }}</a>
+
+  						{% endfor %}
+					{% endfor %}
+
+					<!-- <a class="dropdown-item" href="#">심장</a>
 					<a class="dropdown-item" href="#">눈(시력)</a>
 					<a class="dropdown-item" href="#">간</a>
 					<a class="dropdown-item" href="#">혈관</a>
-					<a class="dropdown-item" href="#">뇌</a>
+					<a class="dropdown-item" href="#">뇌</a> -->
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">남성에게 꼭 필요한 영양제</a>
 					<a class="dropdown-item" href="#">여성에게 꼭 필요한 영양제</a>
