@@ -26,7 +26,7 @@
 	                        <td><a href="{% url 'goodtoknow:post_detail' gpost.pk %}">{{ gpost.title }}</a></td>
 	                        <td>{{ gpost.timestamp }}</td>
 	                        <td>{% get_hit_count for gpost %}</td>
-                            <td> 추천갯수 </td>
+                            <td> {{ gpost.like_count }} </td>
 	                    </tr>
 	            </tbody>
             {% endfor %}

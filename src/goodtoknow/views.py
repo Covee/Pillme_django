@@ -1,9 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from hitcount.views import HitCountDetailView
 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from django.http import HttpResponse
+
 from django.views.generic import DetailView, ListView
 from .models import gPost
+
+import json
+
 
 
 class gPostListView(ListView):
@@ -21,3 +28,25 @@ class gPostCountHitDetailView(HitCountDetailView):
 # 	model = gPost
 # 	template_name = 'goodtoknow/gpost_detail.html'
 
+
+@login_required
+@require_POST	# POST method만 받음
+def gpost_like(request):
+	pk = request.POST.get('pk', None)
+	gpost = get_object_or_404(gPost, pk=pk)
+
+	gpost_like, gpost_like_created = gpost.likegpost_set.get_or_create(user=request.user)
+
+	if not gpost_like_created:
+		gpost_like.delete()
+		message = "좋아요 취소"
+	else:
+		message = "좋아요"
+
+	context = {
+				'like_count': gpost.like_count,
+				'message': message,
+				'username': request.user.username
+	}
+
+	return HttpResponse(json.dumps(context))
